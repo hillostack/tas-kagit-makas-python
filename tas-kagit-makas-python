@@ -1,0 +1,29 @@
+import random
+
+SECENEKLER = ("taş", "kağıt", "makas")
+
+print("Merhabalar oyuncu! Benimle Taş-Kağıt-Makas oynamaya ne dersin?")
+print("Hadi başlayalım!")
+
+while True:
+    oyuncu = input("\nHamlen ne? (Çıkmak için 'çık' yazman yeterli): ").strip().lower()
+    
+    if oyuncu == "çık":
+        print("Oyun bitti, görüşmek üzere!")
+        break
+        
+    if oyuncu not in SECENEKLER:
+        print("Geçersiz hamle! Lütfen sadece taş, kağıt veya makas yaz.")
+        continue
+
+    bilgisayar = random.choice(SECENEKLER)
+    print(f"Bilgisayarın hamlesi: {bilgisayar}")
+
+    if oyuncu == bilgisayar:
+        print("Berabere!")
+    elif (oyuncu == "taş" and bilgisayar == "makas") or \
+         (oyuncu == "kağıt" and bilgisayar == "taş") or \
+         (oyuncu == "makas" and bilgisayar == "kağıt"):
+        print("Tebrikler, kazandın!")
+    else:
+        print("Bilgisayar kazandı!")
